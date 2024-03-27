@@ -20,7 +20,7 @@ public class EmailServiceImpl implements EmailService {
 
     public MessageResponseDto sendEmail(EmailRequestDto emailRequestDto){
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("fahri.ris15@gmail.com");
+        message.setFrom("fahri@gmail.com");
         message.setTo(emailRequestDto.getTo());
         message.setSubject(emailRequestDto.getSubject());
         message.setText(emailRequestDto.getMessage());

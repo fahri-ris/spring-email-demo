@@ -5,4 +5,5 @@ import com.demo.springemail.dtos.MessageResponseDto;
 
 public interface EmailService {
     MessageResponseDto sendEmail(EmailRequestDto emailRequestDto);
+    MessageResponseDto sendOtp(EmailRequestDto emailRequestDto);
 }

@@ -8,6 +8,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.Random;
 
 @Service
 public class EmailServiceImpl implements EmailService {
@@ -28,5 +29,26 @@ public class EmailServiceImpl implements EmailService {
         javaMailSender.send(message);
 
         return new MessageResponseDto("Mail sent successfully");
+    }
+
+    @Override
+    public MessageResponseDto sendOtp(EmailRequestDto emailRequestDto) {
+        Integer otpLength = 6;
+        String otp = "";
+        Random rand = new Random();
+
+        for(int i = 0; i < otpLength; i++){
+            otp += String.valueOf(rand.nextInt(10));
+        }
+
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("fahri@gmail.com");
+        message.setTo(emailRequestDto.getTo());
+        message.setSubject(emailRequestDto.getSubject());
+        message.setText("OTP: " + otp);
+
+        javaMailSender.send(message);
+
+        return new MessageResponseDto("OTP sent successfully");
     }
 }

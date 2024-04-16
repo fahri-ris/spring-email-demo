@@ -24,4 +24,9 @@ public class EmailController {
     public ResponseEntity<MessageResponseDto> sendEmail(@RequestBody EmailRequestDto emailRequestDto){
         return ResponseEntity.ok(emailService.sendEmail(emailRequestDto));
     }
+
+    @PostMapping("/otp")
+    public ResponseEntity<MessageResponseDto> sendOtp(@RequestBody EmailRequestDto emailRequestDto){
+        return ResponseEntity.ok(emailService.sendOtp(emailRequestDto));
+    }
 }
